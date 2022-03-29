@@ -6,3 +6,9 @@ class PerfilSerializer(serializers.ModelSerializer):
     class Meta:
         model = Perfil
         exclude = ('modified', 'created')
+
+class PerfilCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Perfil
+        fields = ('nome_instituicao', 'cep', 'cnpj')
+

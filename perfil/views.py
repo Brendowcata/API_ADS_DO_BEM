@@ -1,5 +1,5 @@
 from rest_framework.viewsets import ModelViewSet
-from perfil.serializers import PerfilCreateSerializer, PerfilSerializer 
+from perfil.serializers import PerfilSerializer, PerfilCreateSerializer
 from perfil.models import Perfil
 from .service import PerfilService
 from rest_framework.response import Response
@@ -16,7 +16,7 @@ class PerfilViewSet(ModelViewSet):
         serializer.is_valid(raise_exception=True)
         data = self.service_class.busca_cep(request.data.get('cep'))
         if data is None:
-            return Response ({"message": "Erro para buscar o cep"}, status=status.HTTP_201_CREATED, headers=headers)
+            return Response ({"message": "Erro para buscar o cep"}, status=status.HTTP_201_CREATED)
         data = self.service_class.create_to_save(data, request.data)
         serializer = self.get_serializer(data=data)
         serializer.is_valid(raise_exception=True)
